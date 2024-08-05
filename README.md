@@ -3,6 +3,7 @@
 > Read the associated blog post: [.NET Aspire is the best way to experiment with Dapr during local development](https://anthonysimmon.com/dotnet-aspire-best-way-to-experiment-dapr-local-dev/).
 
 This is a sample .NET Aspire app host that orchestrates three services:
+Browse to <https://localhost:17262> to open the .NET Aspire dashboard.
 
 1. An ASP.NET Core minimal API named "alice" that uses Dapr service invocation to call the "bob" service in order to retrieve the weather forecast. The results are then cached in a Dapr state store.
 2. An ASP.NET Core minimal API named "bob" that returns weather forecast data, but the endpoint is voluntarily flaky and can return errors. When a weather forecast is successfully returned to a client, the "bob" service will publish an event using Dapr pub/sub.
@@ -36,7 +37,7 @@ Because the "bob" service is flaky, a Dapr resiliency policy is configured to re
 
 - Clone this repository.
 - Execute `dotnet run` inside the `AspireDaprDemo.AppHost/` directory.
-- Browse to https://localhost:17262 to open the .NET Aspire dashboard.
+- Browse to to open the .NET Aspire dashboard.
 - Click on the first endpoint of the "alice" service to retrieve the weather forecast from "bob" and let "carol" log the event.
 - Use the "Traces" view to monitor the operation.
 
